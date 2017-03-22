@@ -9,8 +9,9 @@
     <sprite>sprites\spr_floor</sprite>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_steps</sprite>
-    <sprite>sprites\sprite4</sprite>
-    <sprite>sprites\sprite5</sprite>
+    <sprite>sprites\spr_ladder</sprite>
+    <sprite>sprites\spr_bug</sprite>
+    <sprite>sprites\spr_bullet</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -21,6 +22,8 @@
     <object>objects\obj_floor</object>
     <object>objects\obj_player</object>
     <object>objects\obj_steps</object>
+    <object>objects\obj_bug</object>
+    <object>objects\obj_bullet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_1</room>
