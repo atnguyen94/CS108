@@ -12,6 +12,7 @@
     <sprite>sprites\spr_ladder</sprite>
     <sprite>sprites\spr_bug</sprite>
     <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\test</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -20,10 +21,10 @@
   <objects name="objects">
     <object>objects\obj_ladder</object>
     <object>objects\obj_floor</object>
-    <object>objects\obj_player</object>
     <object>objects\obj_steps</object>
     <object>objects\obj_bug</object>
     <object>objects\obj_bullet</object>
+    <object>objects\obj_player</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_1</room>
