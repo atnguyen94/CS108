@@ -117,7 +117,18 @@ if(y &gt; room_height){
     game_restart();
 }
 
-
+//Ladder
+if(place_meeting(x,y,obj_ladder)){
+    vspeed = 0
+    gravity = 0
+    
+    if(keyboard_check(ord('W'))){
+        vspeed = -2;
+        }
+    if(keyboard_check(ord('S'))){
+        vspeed = 2;
+        }
+}
 </string>
           </argument>
         </arguments>

@@ -6,28 +6,44 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_floor</sprite>
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_steps</sprite>
     <sprite>sprites\spr_ladder</sprite>
     <sprite>sprites\spr_bug</sprite>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\test</sprite>
+    <sprites name="Floors">
+      <sprite>sprites\spr_floor1</sprite>
+      <sprite>sprites\spr_floor</sprite>
+    </sprites>
+    <sprites name="Steps">
+      <sprite>sprites\spr_steps1</sprite>
+      <sprite>sprites\spr_steps1_2</sprite>
+      <sprite>sprites\spr_steps</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
+    <background>background\bg_2</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_ladder</object>
-    <object>objects\obj_floor</object>
-    <object>objects\obj_steps</object>
     <object>objects\obj_bug</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_player</object>
+    <objects name="Steps">
+      <object>objects\obj_steps1</object>
+      <object>objects\obj_steps1_2</object>
+      <object>objects\obj_steps</object>
+    </objects>
+    <objects name="Floors">
+      <object>objects\obj_floor</object>
+      <object>objects\obj_floor1</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_1</room>
+    <room>rooms\rm_2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
