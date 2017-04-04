@@ -31,6 +31,7 @@ hsp = 0;
 vsp = 0; 
 jumpspeed = 12;
 movespeed = 4;
+bullet_direction = 0;
 
 image_speed = 0;
 </string>
@@ -159,6 +160,30 @@ if(place_meeting(x,y,obj_ladder)){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>bullet_direction</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="5" enumb="65">
       <action>
@@ -182,6 +207,30 @@ if(place_meeting(x,y,obj_ladder)){
           <argument>
             <kind>0</kind>
             <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>bullet_direction</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>180</string>
           </argument>
         </arguments>
       </action>
