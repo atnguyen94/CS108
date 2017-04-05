@@ -32,6 +32,9 @@ vsp = 0;
 jumpspeed = 12;
 movespeed = 4;
 bullet_direction = 0;
+jumps = 0;
+
+max_jumps = 2;
 
 image_speed = 0;
 </string>
@@ -60,15 +63,30 @@ image_speed = 0;
 
 key_right = keyboard_check(ord("D"));
 key_left = -keyboard_check(ord("A"));
-key_jump = keyboard_check_pressed(ord("W"));
+key_jump = keyboard_check_pressed(ord("W")); 
+
+key_up = keyboard_check(ord("W"));
+key_down = keyboard_check(ord("S"));
 
 move = key_right + key_left;
 hsp = move * movespeed; 
 
+
 if(vsp &lt; 10) vsp += grav;
 
+// Jumping
+if (place_meeting(x, y+1, obj_floor)) || (place_meeting(x, y+1, obj_steps)){
+    jumps = max_jumps;  // If we touch the floor or step, reset double jump
+}
+
+if(key_jump) &amp;&amp; (jumps &gt; 0) {   
+    jumps -= 1; 
+    vsp = -jumpspeed;
+    
+}
 // Keeps character within the screen
 x=clamp(x,0,room_width-sprite_width);
+
 
 
 // Collision with floor
@@ -79,35 +97,41 @@ if(place_meeting(x, y+1, obj_steps)){
     vsp = key_jump * -jumpspeed;
 }
 
-if(place_meeting(x + hsp, y, obj_floor)){
-    while(!place_meeting(x + sign(hsp), y, obj_floor)){
-        x += sign(hsp);
-    }
-    hsp = 0;
-}
 
-// Collision with steps
-if(place_meeting(x, y + vsp, obj_steps)){
+
+// Step Collision
+if(place_meeting(x, y + vsp, obj_steps)){   // Vertical
     while(!place_meeting(x, y + sign(vsp), obj_steps)){
         y += sign(vsp);
     }
     vsp = 0;
 }
 
-if(place_meeting(x + hsp, y, obj_steps)){
+if(place_meeting(x + hsp, y, obj_steps)){   // Horizontal 
     while(!place_meeting(x + sign(hsp), y, obj_steps)){
         x += sign(hsp);
     }
     hsp = 0;
 }
 
-if(place_meeting(x, y + vsp, obj_floor)){
+// Floor collision
+if(place_meeting(x, y + vsp, obj_floor)){   // Vertical
     while(!place_meeting(x, y + sign(vsp), obj_floor)){
         y += sign(vsp);
     }
     vsp = 0;
 }
 
+if(place_meeting(x + hsp, y, obj_floor)){   // Horizontal
+    while(!place_meeting(x + sign(hsp), y, obj_floor)){
+        x += sign(hsp);
+    }
+    hsp = 0;
+}
+
+
+
+// Move the player to these coordinates
 x += hsp;
 y += vsp;
 
@@ -118,18 +142,7 @@ if(y &gt; room_height){
     game_restart();
 }
 
-//Ladder
-if(place_meeting(x,y,obj_ladder)){
-    vspeed = 0
-    gravity = 0
-    
-    if(keyboard_check(ord('W'))){
-        vspeed = -2;
-        }
-    if(keyboard_check(ord('S'))){
-        vspeed = 2;
-        }
-}
+
 </string>
           </argument>
         </arguments>
