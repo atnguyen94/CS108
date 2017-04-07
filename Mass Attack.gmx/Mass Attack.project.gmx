@@ -10,7 +10,7 @@
     <sprite>sprites\spr_ladder</sprite>
     <sprite>sprites\spr_bug</sprite>
     <sprite>sprites\spr_bullet</sprite>
-    <sprite>sprites\test</sprite>
+    <sprite>sprites\spr_platform</sprite>
     <sprites name="Floors">
       <sprite>sprites\spr_floor1</sprite>
       <sprite>sprites\spr_floor</sprite>
@@ -20,6 +20,7 @@
       <sprite>sprites\spr_steps1_2</sprite>
       <sprite>sprites\spr_steps</sprite>
     </sprites>
+    <sprite>sprites\spr_portal</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -40,6 +41,8 @@
       <object>objects\obj_floor</object>
       <object>objects\obj_floor1</object>
     </objects>
+    <object>objects\obj_platform</object>
+    <object>objects\obj_portal</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_1</room>

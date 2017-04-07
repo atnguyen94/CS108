@@ -37,6 +37,8 @@ jumps = 0;
 max_jumps = 2;
 
 image_speed = 0;
+
+key_down = 0;
 </string>
           </argument>
         </arguments>
@@ -64,8 +66,6 @@ image_speed = 0;
 key_right = keyboard_check(ord("D"));
 key_left = -keyboard_check(ord("A"));
 key_jump = keyboard_check_pressed(ord("W")); 
-
-key_up = keyboard_check(ord("W"));
 key_down = keyboard_check(ord("S"));
 
 move = key_right + key_left;
@@ -91,7 +91,9 @@ x=clamp(x,0,room_width-sprite_width);
 
 // Collision with floor
 if(place_meeting(x, y+1, obj_floor)){
-    vsp = key_jump * -jumpspeed;
+    if(key_jump){
+        vsp = -jumpspeed;
+    }
 }
 if(place_meeting(x, y+1, obj_steps)){
     vsp = key_jump * -jumpspeed;
@@ -143,6 +145,29 @@ if(y &gt; room_height){
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_portal">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto_next();
 </string>
           </argument>
         </arguments>
