@@ -205,6 +205,7 @@
     <instance objName="obj_steps1" x="672" y="224" name="inst_99AD2FB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_steps1" x="384" y="512" name="inst_BCDF0FFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="64" y="416" name="inst_D3FCDEDD" locked="0" code="" scaleX="2" scaleY="2.06666660308838" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_1" x="704" y="136" name="inst_5CB435A5" locked="0" code="" scaleX="0.400000005960464" scaleY="0.360000014305115" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
