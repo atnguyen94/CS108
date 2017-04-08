@@ -11,7 +11,6 @@
     <sprite>sprites\spr_ladder</sprite>
     <sprite>sprites\spr_bug</sprite>
     <sprite>sprites\spr_bullet</sprite>
-    <sprite>sprites\spr_platform</sprite>
     <sprites name="Floors">
       <sprite>sprites\spr_floor1</sprite>
       <sprite>sprites\spr_floor</sprite>
@@ -22,7 +21,7 @@
       <sprite>sprites\spr_steps</sprite>
     </sprites>
     <sprite>sprites\spr_portal</sprite>
-    <sprite>sprites\enemy_1</sprite>
+    <sprite>sprites\spr_monster</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -30,6 +29,7 @@
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
+    <object>objects\obj_score</object>
     <object>objects\obj_ladder</object>
     <object>objects\obj_bug</object>
     <object>objects\obj_bullet</object>
@@ -43,9 +43,9 @@
       <object>objects\obj_floor</object>
       <object>objects\obj_floor1</object>
     </objects>
-    <object>objects\obj_platform</object>
     <object>objects\obj_portal</object>
-    <object>objects\obj_enemy_1</object>
+    <object>objects\obj_spawner</object>
+    <object>objects\obj_monster</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_1</room>

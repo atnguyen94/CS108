@@ -7,20 +7,19 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>2</bboxmode>
-  <bbox_left>4</bbox_left>
-  <bbox_right>28</bbox_right>
-  <bbox_top>3</bbox_top>
-  <bbox_bottom>60</bbox_bottom>
+  <bbox_left>8</bbox_left>
+  <bbox_right>40</bbox_right>
+  <bbox_top>8</bbox_top>
+  <bbox_bottom>40</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>42</width>
-  <height>61</height>
+  <width>48</width>
+  <height>48</height>
   <frames>
-    <frame index="0">images\spr_player1_0.png</frame>
-    <frame index="1">images\spr_player1_1.png</frame>
+    <frame index="0">images\spr_monster_0.png</frame>
   </frames>
 </sprite>
