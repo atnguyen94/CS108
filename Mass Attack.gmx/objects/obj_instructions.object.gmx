@@ -28,6 +28,9 @@
             <string>draw_text(room_width/4 - 20, 10, "Welcome to Mass Attack, win by shooting down monsters and defeating the boss");
 
 draw_text(10, 120, "Objectives:");
+draw_text(10, 132, "Shoot 50 monsters. Every 10 monsters killed spawns more monsters");
+draw_text(10, 144, "After 50 monsters, you need to kill the boss, who has 50 health");
+draw_text(10, 156, "Defeat the boss to win the game");
 
 draw_text(10, 188, "Instructions:");
 draw_text(10, 200, "Space to jump and double-jump");
