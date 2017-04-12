@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,21 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>max_monsters = 5;
+            <string>draw_text(room_width/4 - 20, 10, "Welcome to Mass Attack, win by shooting down monsters and defeating the boss");
 
-if(global.points &gt; 40) max_monsters = 14;
-else if (global.points &gt; 30) max_monsters = 12;
-else if (global.points &gt; 20) max_monsters = 10;
-else if (global.points &gt; 10) max_monsters = 8;
+draw_text(10, 30, "W to jump and double-jump");
+draw_text(10, 42, "A to walk left");
+draw_text(10, 54, "S to walk right");
+draw_text(10, 66, "D to drop through certain floors");
 
-
-if(global.numberOfMonsters &lt; max_monsters) {
-    instance_create(random(room_width), random(room_height), obj_monster);
-    global.numberOfMonsters++;
-}
-
-
-
+draw_text(10, 450, "You can jump and drop through this one");
+draw_text(500, 450, "But can't go through this one");
 </string>
           </argument>
         </arguments>

@@ -55,6 +55,7 @@
     <objects name="Background Objects">
       <object>objects\obj_control</object>
       <object>objects\obj_gameOver</object>
+      <object>objects\obj_instructions</object>
       <object>objects\obj_score</object>
       <object>objects\obj_spawner</object>
       <object>objects\obj_timer</object>

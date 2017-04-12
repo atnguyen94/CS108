@@ -109,8 +109,9 @@
     <instance objName="obj_floor" x="960" y="672" name="inst_1BB171FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_floor" x="992" y="672" name="inst_C2C539ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="0" y="512" name="inst_E0507123" locked="0" code="" scaleX="0.780487775802612" scaleY="1.06666672229767" colour="4294967295" rotation="0"/>
-    <instance objName="obj_portal" x="608" y="602" name="inst_C7326DFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_portal" x="896" y="608" name="inst_C7326DFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_score" x="0" y="0" name="inst_9F2C52A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_instructions" x="32" y="0" name="inst_17970618" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
