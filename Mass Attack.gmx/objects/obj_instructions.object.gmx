@@ -27,10 +27,14 @@
             <kind>1</kind>
             <string>draw_text(room_width/4 - 20, 10, "Welcome to Mass Attack, win by shooting down monsters and defeating the boss");
 
-draw_text(10, 30, "W to jump and double-jump");
-draw_text(10, 42, "A to walk left");
-draw_text(10, 54, "S to walk right");
-draw_text(10, 66, "D to drop through certain floors");
+draw_text(10, 120, "Objectives:");
+
+draw_text(10, 188, "Instructions:");
+draw_text(10, 200, "Space to jump and double-jump");
+draw_text(10, 212, "A to walk left");
+draw_text(10, 224, "D to walk right");
+draw_text(10, 236, "S to drop through certain floors");
+draw_text(10, 248, "Left-click to shoot bullets");
 
 draw_text(10, 450, "You can jump and drop through this one");
 draw_text(500, 450, "But can't go through this one");

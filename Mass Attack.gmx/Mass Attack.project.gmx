@@ -37,7 +37,6 @@
     <font>fonts\small_font</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_ladder</object>
     <object>objects\obj_bug</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_player</object>
@@ -53,12 +52,14 @@
     <object>objects\obj_portal</object>
     <object>objects\obj_monster</object>
     <objects name="Background Objects">
+      <object>objects\obj_create_boss</object>
       <object>objects\obj_control</object>
       <object>objects\obj_gameOver</object>
       <object>objects\obj_instructions</object>
       <object>objects\obj_score</object>
       <object>objects\obj_spawner</object>
       <object>objects\obj_timer</object>
+      <object>objects\obj_winGame</object>
     </objects>
     <object>objects\bg_music</object>
     <object>objects\obj_boss</object>

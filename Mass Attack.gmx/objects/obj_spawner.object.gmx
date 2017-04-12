@@ -27,10 +27,11 @@
             <kind>1</kind>
             <string>max_monsters = 5;
 
-if(global.points &gt; 40) max_monsters = 14;
-else if (global.points &gt; 30) max_monsters = 12;
-else if (global.points &gt; 20) max_monsters = 10;
-else if (global.points &gt; 10) max_monsters = 8;
+if(global.points &gt;= 50) max_monsters = 0;
+else if(global.points &gt;= 40) max_monsters = 14;
+else if (global.points &gt;= 30) max_monsters = 12;
+else if (global.points &gt;= 20) max_monsters = 10;
+else if (global.points &gt;= 10) max_monsters = 8;
 
 
 if(global.numberOfMonsters &lt; max_monsters) {
