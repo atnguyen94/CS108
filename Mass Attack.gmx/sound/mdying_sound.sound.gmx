@@ -2,10 +2,10 @@
 <sound>
   <kind>0</kind>
   <extension>.wav</extension>
-  <origname>sound\audio\player_shoot.wav</origname>
+  <origname>sound\audio\mdying_sound.wav</origname>
   <effects>0</effects>
   <volume>
-    <volume>0.8</volume>
+    <volume>1</volume>
   </volume>
   <pan>0</pan>
   <bitRates>
@@ -21,9 +21,9 @@
     <bitDepth>16</bitDepth>
   </bitDepths>
   <preload>-1</preload>
-  <data>player_shoot.wav</data>
-  <compressed>1</compressed>
-  <streamed>1</streamed>
+  <data>mdying_sound.wav</data>
+  <compressed>0</compressed>
+  <streamed>0</streamed>
   <uncompressOnLoad>0</uncompressOnLoad>
   <audioGroup>0</audioGroup>
 </sound>

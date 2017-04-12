@@ -36,6 +36,8 @@ image_speed = 0;
 direction = random(360);
 image_angle = direction + 160;
 speed = 2 + random(2);
+
+audio_play_sound(mdying_sound,0,0);
 </string>
           </argument>
         </arguments>
@@ -150,6 +152,8 @@ speed = 2 + random(2);
             <kind>1</kind>
             <string>global.points ++;
 global.numberOfMonsters--;
+
+
 </string>
           </argument>
         </arguments>
