@@ -70,14 +70,14 @@ if(bossHealth &lt;= 0){
     instance_destroy();
 }
 
-if(x &lt; 200){
+if(x &lt; 250){
     move = 1;
     image_index = 1;
 }
 
 global.bug_angle = global.bug_angle + random_range(20,30);
 
-if(random(100) &gt; 87){
+if(random(100) &gt; 80){
     instance_create(x,y,obj_bug);
 }
 

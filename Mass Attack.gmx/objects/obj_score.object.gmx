@@ -51,7 +51,8 @@ global.numberOfMonsters = 0;
             <kind>1</kind>
             <string>draw_set_color(c_black);
 if(instance_exists(obj_player)) {
-    draw_text(80, 10, "Score:  " + string(global.points));  
+    draw_text(80, 10, "Score:  " + string(global.points) + "/50");  
+    draw_text(80, 40, "Reach 50 to fight the boss");
 }
 </string>
           </argument>
