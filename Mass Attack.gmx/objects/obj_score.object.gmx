@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.points = 0;
+global.numberOfMonsters = 0;
 </string>
           </argument>
         </arguments>
@@ -49,7 +50,9 @@
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_black);
-draw_text(10, 10, global.points);
+if(instance_exists(obj_player)) {
+    draw_text(80, 10, "Score:  " + string(global.points));  
+}
 </string>
           </argument>
         </arguments>

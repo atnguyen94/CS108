@@ -31,8 +31,11 @@
     <background>background\bg_2</background>
   </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\custom_font_0</font>
+    <font>fonts\small_font</font>
+  </fonts>
   <objects name="objects">
-    <object>objects\obj_score</object>
     <object>objects\obj_ladder</object>
     <object>objects\obj_bug</object>
     <object>objects\obj_bullet</object>
@@ -47,8 +50,14 @@
       <object>objects\obj_floor1</object>
     </objects>
     <object>objects\obj_portal</object>
-    <object>objects\obj_spawner</object>
     <object>objects\obj_monster</object>
+    <objects name="Background Objects">
+      <object>objects\obj_control</object>
+      <object>objects\obj_gameOver</object>
+      <object>objects\obj_score</object>
+      <object>objects\obj_spawner</object>
+      <object>objects\obj_timer</object>
+    </objects>
     <object>objects\bg_music</object>
   </objects>
   <rooms name="rooms">

@@ -25,13 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(obj_monster)){
+            <string>if(global.numberOfMonsters &lt; 5) {
     instance_create(random(room_width), random(room_height), obj_monster);
-    instance_create(random(room_width), random(room_height), obj_monster);
-    instance_create(random(room_width), random(room_height), obj_monster);
-    instance_create(random(room_width), random(room_height), obj_monster);
-    instance_create(random(room_width), random(room_height), obj_monster);
+    global.numberOfMonsters++;
 }
+
+
 </string>
           </argument>
         </arguments>
