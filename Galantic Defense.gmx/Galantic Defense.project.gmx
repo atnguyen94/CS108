@@ -6,30 +6,50 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\spr_Tower</sprite>
     <sprite>sprites\spr_enemy</sprite>
-    <sprite>sprites\spr_dirt</sprite>
-    <sprite>sprites\spr_tower</sprite>
-    <sprite>sprites\spr_orb</sprite>
+    <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_PlayerHp</sprite>
+    <sprite>sprites\spr_TowerTwo</sprite>
+    <sprite>sprites\spr_enemy2</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_Tileset</background>
+  </backgrounds>
   <paths name="paths">
     <path>paths\pth_1</path>
   </paths>
-  <fonts name="fonts">
-    <font>fonts\fnt_hud</font>
-  </fonts>
+  <scripts name="scripts">
+    <scripts name="Waves">
+      <script>scripts\checkWaveDone.gml</script>
+      <script>scripts\scriptL1W1.gml</script>
+      <script>scripts\scriptL1W2.gml</script>
+      <script>scripts\scriptL1W3.gml</script>
+    </scripts>
+    <scripts name="Misc">
+      <script>scripts\placeTower.gml</script>
+    </scripts>
+  </scripts>
   <objects name="objects">
-    <object>objects\obj_enemy</object>
-    <object>objects\obj_dirt</object>
-    <object>objects\obj_tower</object>
-    <object>objects\obj_orb</object>
-    <object>objects\obj_waveControl</object>
-    <object>objects\obj_stats</object>
-    <object>objects\obj_control</object>
+    <objects name="Enemies">
+      <object>objects\obj_enemy1</object>
+      <object>objects\obj_enemyparent1</object>
+      <object>objects\obj_enemy2</object>
+    </objects>
+    <objects name="Controllers">
+      <object>objects\obj_controllerparent1</object>
+      <object>objects\obj_controller1</object>
+    </objects>
+    <objects name="Towers">
+      <object>objects\obj_Tower</object>
+      <object>objects\obj_TowerParent</object>
+      <object>objects\obj_TowerTwo</object>
+    </objects>
+    <object>objects\obj_Debugger</object>
+    <objects name="Bullets">
+      <object>objects\obj_Bullet</object>
+    </objects>
   </objects>
-  <timelines name="timelines">
-    <timeline>timelines\tm_1</timeline>
-  </timelines>
   <rooms name="rooms">
     <room>rooms\rm_1</room>
   </rooms>
