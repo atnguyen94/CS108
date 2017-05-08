@@ -204,12 +204,12 @@ for ( var i = 0; i &lt; playerHp; i++)
             <kind>1</kind>
             <string>/// Draw Tower Selection Menu
 
-draw_rectangle_colour(0, room_height - 96, room_width, room_height, c_black, c_black,
+draw_rectangle_colour(0, room_height - 48, room_width, room_height, c_black, c_black,
                                             c_black, c_black, c_black);
 
-draw_sprite(spr_Tower, 0, 48, room_height - 48);
+draw_sprite(spr_Tower, 0, 32, room_height - 24);
 
-draw_sprite(spr_TowerTwo, 0, 112, room_height - 48);
+draw_sprite(spr_TowerTwo, 0, 96, room_height - 24);
 
 </string>
           </argument>
