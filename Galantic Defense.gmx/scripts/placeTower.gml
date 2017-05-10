@@ -8,7 +8,7 @@ if (money >= argument[1])
     var xPlace = (mouse_x div 32) * 32 + 16;
     var yPlace = (mouse_y div 32) * 32 + 16;
     
-    if (place_empty(xPlace, yPlace))
+    if (!position_meeting(xPlace, yPlace, all))
     {
             instance_create(xPlace, yPlace, argument[2]);
             money -= argument[1];

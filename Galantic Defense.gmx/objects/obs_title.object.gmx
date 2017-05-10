@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_controllerparent1</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,67 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-// wave vars
-event_inherited();
-waves = 3;
-path = pth_1;
-currentWave = waves;
-enemies = 5;
+            <string>/// Set Variables
 
-// health and money vars
-playerHp = 20;
-money = 200;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Start to True
+vpart = room_height / 4;
+hpart = room_width / 2;
 
-start = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// canSpawn to True
-
-canSpawn = true;
 </string>
           </argument>
         </arguments>
@@ -94,17 +38,35 @@ canSpawn = true;
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Calculate arrowX and arrowY
+
+arrowX = 96;
+
+if(mouse_y &lt; vpart + vpart / 2)
+    arrowY = vpart;
+if(mouse_y &gt;= vpart + vpart / 2 &amp;&amp; mouse_y &lt; 2 * vpart + vpart / 2)
+    arrowY = 2 * vpart;
+if(mouse_y &gt; 2* vpart + vpart / 2)
+    arrowY = 3 * vpart;    
+        
+    
+</string>
+          </argument>
+        </arguments>
       </action>
       <action>
         <libid>1</libid>
@@ -122,30 +84,74 @@ canSpawn = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Handle Waves
-switch(currentWave)
-{
-    case 3:
-    if (start) {
-        if (checkWaveDone(10)) break;
-        scriptL1W1();
-    }
-    break;
+            <string>/// Select From Options
+
+if (mouse_check_button_pressed(mb_left)) {
+    if(arrowY == vpart) // campaign is selected
+        room_goto(rm_1);
     
-    case 2:
-    if (start){
-        if (checkWaveDone(16)) break;
-        scriptL1W2();
-    }
-    break;
-    
-    case 1:
-    if (start){
-        if (checkWaveDone(8)) break;
-        scriptL1W3();
-    }
-    break;
-}
+            
+    else if(arrowY == 2 * vpart) //infinite selected
+        room_goto(rm_1_inf);
+    else //   end game selected      
+        game_end();
+}   
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Text
+
+draw_set_halign(fa_center);
+draw_set_color(c_white);
+
+
+draw_text_transformed(hpart, vpart, "Campaign", 3, 3, 0);
+draw_text_transformed(hpart, 2 * vpart, "Infinite", 3, 3, 0);
+draw_text_transformed(hpart, 3 * vpart, "Exit Game", 3, 3, 0);
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Arrow
+
+draw_sprite(spr_title_select, 0, arrowX, arrowY);
 </string>
           </argument>
         </arguments>

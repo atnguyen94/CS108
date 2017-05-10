@@ -31,12 +31,12 @@ oneRespawnRate = 30;
 twoRespawnRate = 15;
 
 
-respawnRate = 0;
 maxHp = 0
+respawnRate = 0;
 
 path = asset_get_index(object_get_name(obj_controllerparent1)).path;
 
-path_start(path, enemySpeed, path_action_stop, 1);
+path_start(path, enspeed, path_action_stop, 1);
 </string>
           </argument>
         </arguments>

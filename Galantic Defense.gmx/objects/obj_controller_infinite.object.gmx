@@ -25,42 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-// wave vars
-event_inherited();
-waves = 3;
-path = pth_1;
-currentWave = waves;
-enemies = 5;
+            <string>///Initialize Variables
 
-// health and money vars
+event_inherited();
+
+// set path based on room
+if (room == rm_1_inf) path = pth_1;
+
+// player health and money variables
 playerHp = 20;
 money = 200;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Start to True
 
-start = true;
+// misc
+wave = 0;
+waveStart = false;
 </string>
           </argument>
         </arguments>
@@ -83,29 +61,16 @@ start = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// canSpawn to True
+            <string>///start and waveStart to true
 
-canSpawn = true;
+start = true;
+waveStart = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -122,30 +87,134 @@ canSpawn = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Handle Waves
-switch(currentWave)
-{
-    case 3:
-    if (start) {
-        if (checkWaveDone(10)) break;
-        scriptL1W1();
-    }
-    break;
+            <string>///canSpawn set true    
+
+canSpawn = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Wave controller
+
+if(start){
+    //enum constants { numEnemies = 0.5, speedEnemies = 0.5}
     
-    case 2:
-    if (start){
-        if (checkWaveDone(16)) break;
-        scriptL1W2();
+    if(waveStart){
+        // calculate # of enemies in this wave
+        enemies = 5 + ceil(0.5 * wave);
+        
+        // calculate enemy values (enspeed, respawnRate, maxHp)
+        // enspeed
+        if(wave &lt; 6) 
+            enspeed = 3;
+        else 
+            enspeed = 0.5 * wave;
+            
+        // respawn rate    
+        if(wave &gt;= 40)
+            respawnRate = 5;
+        else    
+            respawnRate = 45 - wave; 
+        
+            
+        // maxHp        
+        if (wave &lt; 10)
+            maxHp = 10;
+        else 
+            maxHp = wave;
+             
+        waveStart = false;   
     }
-    break;
+        
+    //create calculated number of enemies for the wave
+    if(canSpawn &amp;&amp; enemies &gt; 0){
+        instance_create(0, 0, obj_enemy_infinite);
+        alarm[0] = respawnRate;
+        canSpawn = false
+        enemies--;
+    }
     
-    case 1:
-    if (start){
-        if (checkWaveDone(8)) break;
-        scriptL1W3();
+    // reset for next wave
+    
+    if (enemies == 0 &amp;&amp; !instance_exists(obj_enemy_infinite)){
+        wave++;
+        start = false;
+        alarm[1] = 300;
     }
-    break;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Starts game / wave;
+
+if(!start)
+    waveStart = true;
+    
+start = true;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Display current wave
+event_inherited();
+draw_text_colour(room_width - 120, 32, "Wave: " + string(wave), c_black, c_black, c_black, c_black, 1);
 </string>
           </argument>
         </arguments>

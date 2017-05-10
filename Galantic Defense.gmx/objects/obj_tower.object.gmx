@@ -31,7 +31,7 @@ event_inherited();
 
 range = 100;
 reloadSpeed = 30;
-bulletSpeed = 7;
+bulletSpeed = 10;
 
 
 

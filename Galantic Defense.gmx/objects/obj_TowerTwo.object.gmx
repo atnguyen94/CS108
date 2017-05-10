@@ -90,6 +90,8 @@ if (instance_exists(obj_enemyparent1))
     
     for (var i = 0; i &lt; instance_number(obj_enemyparent1); i++)
     {
+        ifs[i] = false;
+    
         var enemy = instance_find(obj_enemyparent1, i);
         enemyDistance = point_distance(x, y, enemy.x, enemy.y);
         

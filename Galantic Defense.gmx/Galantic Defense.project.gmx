@@ -12,6 +12,9 @@
     <sprite>sprites\spr_PlayerHp</sprite>
     <sprite>sprites\spr_TowerTwo</sprite>
     <sprite>sprites\spr_enemy2</sprite>
+    <sprite>sprites\spr_title_select</sprite>
+    <sprite>sprites\spr_enemy_infinite</sprite>
+    <sprite>sprites\sprWall</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
@@ -35,10 +38,13 @@
       <object>objects\obj_enemy1</object>
       <object>objects\obj_enemyparent1</object>
       <object>objects\obj_enemy2</object>
+      <object>objects\obj_enemy_infinite</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_controllerparent1</object>
       <object>objects\obj_controller1</object>
+      <object>objects\obs_title</object>
+      <object>objects\obj_controller_infinite</object>
     </objects>
     <objects name="Towers">
       <object>objects\obj_Tower</object>
@@ -49,9 +55,12 @@
     <objects name="Bullets">
       <object>objects\obj_Bullet</object>
     </objects>
+    <object>objects\obj_wall</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_title</room>
     <room>rooms\rm_1</room>
+    <room>rooms\rm_1_inf</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
