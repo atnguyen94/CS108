@@ -1,16 +1,16 @@
-// argument[0] = tower picjed variable
-// argument[1] = tower cost
-// argument[2] = object id
+// argument[0] = tower cost
+// argument[1] = object id
 
 
-if (money >= argument[1])
+
+if (money >= argument[0])
 {
     var xPlace = (mouse_x div 32) * 32 + 16;
     var yPlace = (mouse_y div 32) * 32 + 16;
     
     if (!position_meeting(xPlace, yPlace, all))
     {
-            instance_create(xPlace, yPlace, argument[2]);
-            money -= argument[1];
+            instance_create(xPlace, yPlace, argument[1]);
+            money -= argument[0];
     }
 }

@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>/// Initialize Variables
 
-
 // wave variables
 path = null;
 waves = 0;
@@ -38,15 +37,21 @@ canSpawn = true;
 // health and money vars
 playerHp = 0;
 money = 0;
+xp = 0;
 
 // tower cost var
 
 towerOneCost = 100;
 towerTwoCost = 150;
+iceTowerCost = 125;
 
 // tower menu var
 towerOnePicked = false;
 towerTwoPicked = false;
+iceTowerPicked = false;
+
+// unlock variables
+iceTowerUnlocked = false;
 
 </string>
           </argument>
@@ -54,6 +59,45 @@ towerTwoPicked = false;
       </action>
     </event>
     <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Select Tower From Menu
+
+if ( mouse_check_button_pressed(mb_left))
+{
+    if(mouse_y &gt;= room_height - 40 &amp;&amp; mouse_y &lt;= room_height - 8)
+    {
+    if(mouse_x &gt;= 12 &amp;&amp; mouse_x &lt;= 48)
+            if (! towerTwoPicked &amp;&amp; ! iceTowerPicked)
+            towerOnePicked = true;
+            
+    if(mouse_x &gt;= 77 &amp;&amp; mouse_x &lt;= 111)
+            if (! towerOnePicked &amp;&amp; ! iceTowerPicked)
+            towerTwoPicked = true;
+            
+    if (mouse_x &gt;= 141 &amp;&amp; mouse_x &lt;= 175 &amp;&amp; iceTowerUnlocked)
+        if(! towerTwoPicked &amp;&amp; ! towerOnePicked)
+            iceTowerPicked = true;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -81,6 +125,8 @@ if (playerHp &lt;= 0)
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -97,27 +143,76 @@ if (playerHp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Select Tower From Menu
+            <string>/// upgrade tower
 
-if ( mouse_check_button_pressed(mb_left))
+var towerid;
+
+if(mouse_check_button_pressed(mb_left))
 {
-    if(mouse_y &gt;= room_height - 40 &amp;&amp; mouse_y &lt;= room_height - 8)
+    towerid = collision_point(mouse_x, mouse_y, obj_TowerParent, true, true);
+    if (towerid)
     {
-    if(mouse_x &gt;= 12 &amp;&amp; mouse_x &lt;= 48)
-            if (! towerTwoPicked)
-            towerOnePicked = true;
-            
-    if(mouse_x &gt;= 77 &amp;&amp; mouse_x &lt;= 111)
-            if (! towerOnePicked)
-            towerTwoPicked = true;
+      if (towerid.object_index == obj_Tower)
+      {
+        if (towerid.level &lt; 2)
+            if( money &gt;= 50)
+                {
+                    towerid.level = 2;
+                    money -= 50;
+                }
+      }  
     }
 }
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// sell tower
+
+var towerid;
+
+if(mouse_check_button_pressed(mb_right))
+{
+    towerid = collision_point(mouse_x, mouse_y, obj_TowerParent, true, true);
+    if (towerid)
+    {
+      if (towerid.object_index == obj_Tower)
+      {
+        if (towerid.level &lt; 2)
+            if( money &gt;= 50)
+                {
+                    money += 75;
+                    with (towerid)
+                        instance_destroy();
+                }
+                else if (towerid.level == 2)
+                {
+                    money += round(50 * 0.75);
+                    towerid.level = 1;
+                }
+      }  
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -141,14 +236,19 @@ if(mouse_check_button_pressed(mb_left))
 
     if (towerOnePicked)
     {
-        placeTower(towerOnePicked, towerOneCost,obj_Tower);
+        placeTower(towerOneCost,obj_Tower);
         towerOnePicked = false;
     }
 
     if (towerTwoPicked)
     {
-        placeTower(towerTwoPicked, towerTwoCost,obj_TowerTwo);
+        placeTower(towerTwoCost,obj_TowerTwo);
         towerTwoPicked = false;
+    }
+        if (iceTowerPicked)
+    {
+        placeTower(iceTowerCost,obj_icetower);
+        iceTowerPicked = false;
     }
 }
 </string>
@@ -204,15 +304,25 @@ for ( var i = 0; i &lt; playerHp; i++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw Tower Selection Menu
+            <string>/// Draw Tower Carried 
 
-draw_rectangle_colour(0, room_height - 48, room_width, room_height, c_black, c_black,
-                                            c_black, c_black, c_black);
+if (towerOnePicked)
+{
+    draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    draw_circle(mouse_x, mouse_y, 100, c_red);
+}
 
-draw_sprite(spr_Tower, 0, 32, room_height - 24);
+if (towerTwoPicked)
+{
+    draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    draw_circle(mouse_x, mouse_y, 50, c_red);
+}
 
-draw_sprite(spr_TowerTwo, 0, 96, room_height - 24);
-
+if (iceTowerPicked)
+{
+    draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    draw_circle(mouse_x, mouse_y, 80, c_red);
+}
 </string>
           </argument>
         </arguments>
@@ -233,19 +343,20 @@ draw_sprite(spr_TowerTwo, 0, 96, room_height - 24);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw Tower Carried 
+            <string>/// Draw Tower Selection Menu
 
-if (towerOnePicked)
+draw_rectangle_colour(0, room_height - 48, room_width, room_height, c_black, c_black,
+                                            c_black, c_black, c_black);
+
+draw_sprite(spr_Tower, 0, 32, room_height - 24);
+
+draw_sprite(spr_TowerTwo, 0, 96, room_height - 24);
+
+if (iceTowerUnlocked)
 {
-    draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
-    draw_circle(mouse_x, mouse_y, 100, c_red);
+    draw_sprite(spr_icetower, 0, 160, room_height - 24);
 }
 
-if (towerTwoPicked)
-{
-    draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
-    draw_circle(mouse_x, mouse_y, 50, c_red);
-}
 </string>
           </argument>
         </arguments>
@@ -270,8 +381,12 @@ if (towerTwoPicked)
 if(mouse_y &gt;= room_height - 40 &amp;&amp; mouse_y &lt;= room_height - 8){
     if(mouse_x &gt;= 13 &amp;&amp; mouse_x &lt;= 47)
         draw_roundrect_colour(12, room_height - 41, 48, room_height - 7, c_white, c_blue, true);
+        
     if(mouse_x &gt;= 77 &amp;&amp; mouse_x &lt;= 111)
         draw_roundrect_colour(78, room_height - 41, 112, room_height - 7, c_white, c_blue, true);
+        
+    if(mouse_x &gt;= 141 &amp;&amp; mouse_x &lt;= 175 &amp;&amp; iceTowerUnlocked)
+        draw_roundrect_colour(142, room_height - 41, 176, room_height - 7, c_white, c_blue, true);
     }
 </string>
           </argument>

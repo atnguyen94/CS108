@@ -7,6 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_Tower</sprite>
+    <sprite>sprites\spr_Tower_up</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_PlayerHp</sprite>
@@ -15,6 +16,8 @@
     <sprite>sprites\spr_title_select</sprite>
     <sprite>sprites\spr_enemy_infinite</sprite>
     <sprite>sprites\sprWall</sprite>
+    <sprite>sprites\spr_icetower</sprite>
+    <sprite>sprites\spr_icebullet</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
@@ -48,12 +51,14 @@
     </objects>
     <objects name="Towers">
       <object>objects\obj_Tower</object>
+      <object>objects\obj_icetower</object>
       <object>objects\obj_TowerParent</object>
       <object>objects\obj_TowerTwo</object>
     </objects>
     <object>objects\obj_Debugger</object>
     <objects name="Bullets">
       <object>objects\obj_Bullet</object>
+      <object>objects\obj_icebullet</object>
     </objects>
     <object>objects\obj_wall</object>
   </objects>

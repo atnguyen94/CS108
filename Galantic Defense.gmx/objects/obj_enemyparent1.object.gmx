@@ -42,6 +42,31 @@ path_start(path, enspeed, path_action_stop, 1);
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reverse effect
+
+path_speed *= 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -65,14 +90,41 @@ if (currentHp &lt;= 0)
 {
     instance_destroy();
     obj_controllerparent1.money += 15;
+    obj_controllerparent1.xp += 15;
 }
 
 if (path_position == 1)
 {
     obj_controllerparent1.playerHp--;
     instance_destroy();
-    obj_controllerparent1.money += 10;
+    obj_controllerparent1.xp += 10;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_icebullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Slow Enemy
+
+alarm[0] = other.duration;
+path_speed *= other.effect;
 </string>
           </argument>
         </arguments>
