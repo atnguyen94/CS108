@@ -18,6 +18,12 @@
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\spr_icetower</sprite>
     <sprite>sprites\spr_icebullet</sprite>
+    <sprite>sprites\spr_bombtower</sprite>
+    <sprite>sprites\spr_snipertower</sprite>
+    <sprite>sprites\spr_reversaltower</sprite>
+    <sprite>sprites\spr_sniperbullet</sprite>
+    <sprite>sprites\spr_reversalbullet</sprite>
+    <sprite>sprites\spr_bombbullet</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Tileset</background>
@@ -54,14 +60,25 @@
       <object>objects\obj_icetower</object>
       <object>objects\obj_TowerParent</object>
       <object>objects\obj_TowerTwo</object>
+      <object>objects\obj_snipertower</object>
+      <object>objects\obj_bombtower</object>
+      <object>objects\obj_reversaltower</object>
     </objects>
     <object>objects\obj_Debugger</object>
     <objects name="Bullets">
       <object>objects\obj_Bullet</object>
+      <object>objects\obj_reversalbullet</object>
       <object>objects\obj_icebullet</object>
+      <object>objects\obj_sniperbullet</object>
+      <object>objects\obj_bombbullet</object>
     </objects>
     <object>objects\obj_wall</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\tm_L1W1</timeline>
+    <timeline>timelines\tm_L1W2</timeline>
+    <timeline>timelines\tm_L1W3</timeline>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\rm_title</room>
     <room>rooms\rm_1</room>

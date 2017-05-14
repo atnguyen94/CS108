@@ -40,18 +40,46 @@ money = 0;
 xp = 0;
 
 // tower cost var
-
-towerOneCost = 100;
-towerTwoCost = 150;
-iceTowerCost = 125;
+towerCost = 0;
 
 // tower menu var
-towerOnePicked = false;
-towerTwoPicked = false;
-iceTowerPicked = false;
+towerPicked = picked.none;
 
 // unlock variables
 iceTowerUnlocked = false;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Enumerate constants
+
+// which tower is picked
+
+enum picked { none, one, two, ice, bomb, sniper, reverse };
+
+// how mmuch does each tower cost
+
+enum cost {one = 100, two = 150, ice = 125, bomb = 175, sniper = 150, reverse = 200 };
+
+
+
 
 </string>
           </argument>
@@ -82,16 +110,23 @@ if ( mouse_check_button_pressed(mb_left))
     if(mouse_y &gt;= room_height - 40 &amp;&amp; mouse_y &lt;= room_height - 8)
     {
     if(mouse_x &gt;= 12 &amp;&amp; mouse_x &lt;= 48)
-            if (! towerTwoPicked &amp;&amp; ! iceTowerPicked)
-            towerOnePicked = true;
+        towerPicked = picked.one;
             
     if(mouse_x &gt;= 77 &amp;&amp; mouse_x &lt;= 111)
-            if (! towerOnePicked &amp;&amp; ! iceTowerPicked)
-            towerTwoPicked = true;
-            
+        towerPicked = picked.two;
+
     if (mouse_x &gt;= 141 &amp;&amp; mouse_x &lt;= 175 &amp;&amp; iceTowerUnlocked)
-        if(! towerTwoPicked &amp;&amp; ! towerOnePicked)
-            iceTowerPicked = true;
+        towerPicked = picked.ice;
+        
+    if (mouse_x &gt;= 205 &amp;&amp; mouse_x &lt;= 239 )
+        towerPicked = picked.bomb;
+        
+    if (mouse_x &gt;= 279 &amp;&amp; mouse_x &lt;= 313 )
+        towerPicked = picked.sniper;
+        
+    if (mouse_x &gt;= 343 &amp;&amp; mouse_x &lt;= 377 )
+        towerPicked = picked.reverse;
+
     }
 }
 </string>
@@ -232,24 +267,37 @@ if(mouse_check_button_pressed(mb_right))
             <string>/// Place Tower at Mouse Position
 
 if(mouse_check_button_pressed(mb_left))
+
 {
-
-    if (towerOnePicked)
+    switch towerPicked
     {
-        placeTower(towerOneCost,obj_Tower);
-        towerOnePicked = false;
+        case picked.one:
+        placeTower(cost.one, obj_Tower);
+        break;
+        
+        case picked.two:
+        placeTower(cost.two, obj_TowerTwo);
+        break;
+        
+        case picked.ice:
+        placeTower(cost.ice, obj_icetower);
+        break;
+        
+        case picked.bomb:
+        placeTower(cost.bomb, obj_bombtower);
+        break;
+        
+        case picked.sniper:
+        placeTower(cost.sniper, obj_snipertower);
+        break;
+        
+        case picked.reverse:
+        placeTower(cost.reverse, obj_reversaltower);
+        break;
+        default:
+            break;
     }
-
-    if (towerTwoPicked)
-    {
-        placeTower(towerTwoCost,obj_TowerTwo);
-        towerTwoPicked = false;
-    }
-        if (iceTowerPicked)
-    {
-        placeTower(iceTowerCost,obj_icetower);
-        iceTowerPicked = false;
-    }
+    towerPicked = picked.none
 }
 </string>
           </argument>
@@ -308,19 +356,28 @@ for ( var i = 0; i &lt; playerHp; i++)
 
 if (towerOnePicked)
 {
-    draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    if(money &gt;= towerOneCost)
+        draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    else
+            draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
     draw_circle(mouse_x, mouse_y, 100, c_red);
 }
 
 if (towerTwoPicked)
 {
-    draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    if(money &gt;= towerTwoCost)
+        draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    else
+            draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
     draw_circle(mouse_x, mouse_y, 50, c_red);
 }
 
 if (iceTowerPicked)
 {
-    draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    if(money &gt;= iceTowerCost)
+        draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+    else
+            draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
     draw_circle(mouse_x, mouse_y, 80, c_red);
 }
 </string>
@@ -347,15 +404,42 @@ if (iceTowerPicked)
 
 draw_rectangle_colour(0, room_height - 48, room_width, room_height, c_black, c_black,
                                             c_black, c_black, c_black);
-
+                                            
+if (money &gt;= cost.one)
 draw_sprite(spr_Tower, 0, 32, room_height - 24);
+else
+draw_sprite_ext(spr_Tower, 0, 32, room_height - 24, 1, 1, 0, c_red, 1);
 
+if (money &gt;= cost.two)
 draw_sprite(spr_TowerTwo, 0, 96, room_height - 24);
+else
+draw_sprite_ext(spr_TowerTwo, 0, 96, room_height - 24, 1, 1, 0, c_red, 1);
 
 if (iceTowerUnlocked)
-{
-    draw_sprite(spr_icetower, 0, 160, room_height - 24);
+{ 
+    if(money &gt;= iceTowerCost)
+        draw_sprite(spr_icetower, 0, 160, room_height - 24);
+    else
+        draw_sprite_ext(spr_icetower,0,160, room_height -24, 1, 1, 0, c_red, 1);
 }
+
+if (money &gt;= cost.bomb)
+draw_sprite(spr_bombtower, 0, 224, room_height - 24);
+else
+draw_sprite_ext(spr_bombtower, 0, 224, room_height - 24, 1, 1, 0, c_red, 1);
+
+if (money &gt;= cost.sniper)
+draw_sprite(spr_snipertower, 0, 288, room_height - 24);
+else
+draw_sprite_ext(spr_snipertower, 0, 288, room_height - 24, 1, 1, 0, c_red, 1);
+
+if (money &gt;= cost.reverse)
+draw_sprite(spr_reversaltower, 0, 352, room_height - 24);
+else
+draw_sprite_ext(spr_reversaltower, 0, 352, room_height - 24, 1, 1, 0, c_red, 1);
+
+
+
 
 </string>
           </argument>
