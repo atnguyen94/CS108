@@ -123,39 +123,10 @@ if (path_position == 1)
             <kind>1</kind>
             <string>/// Turn Around
 
-if (isReversed)
-{
-    if (path_position == 0)
-    {
-        path_speed *= -1;
-        isReversed = false;
-    }
+
+if (path_position &gt; path_positionprevious) {
+    path_endaction = path_action_stop;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_reversalbullet">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Reverse Direction
-isReversed = true;
-path_speed *= -1;
 </string>
           </argument>
         </arguments>
@@ -205,6 +176,31 @@ path_speed *= -1;
 
 alarm[0] = other.duration;
 path_speed *= other.effect;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_reversalbullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reverse Direction
+path_endaction = path_action_reverse;
+path_speed *= -1;
 </string>
           </argument>
         </arguments>

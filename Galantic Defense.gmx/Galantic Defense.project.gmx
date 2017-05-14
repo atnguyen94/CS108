@@ -41,6 +41,7 @@
     <scripts name="Misc">
       <script>scripts\placeTower.gml</script>
     </scripts>
+    <script>scripts\isMouseOnTower.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Enemies">

@@ -20,6 +20,11 @@
           <argument>
             <kind>1</kind>
             <string>instance_create(0,0, obj_enemy2);
+
+start = false;
+
+currentWave--;
+
 </string>
           </argument>
         </arguments>
@@ -149,10 +154,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>start = false;
-
-currentWave--;
-
+            <string>
  alarm[1] = 450;
  
  timeline_position = 0;

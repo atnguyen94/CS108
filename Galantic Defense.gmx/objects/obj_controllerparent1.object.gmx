@@ -78,6 +78,16 @@ enum picked { none, one, two, ice, bomb, sniper, reverse };
 
 enum cost {one = 100, two = 150, ice = 125, bomb = 175, sniper = 150, reverse = 200 };
 
+// tower ranges
+enum range {
+    one = 100,
+    two = 50,
+    ice = 80,
+    bomb = 70,
+    sniper = 200,
+    reverse = 100
+}
+
 
 
 
@@ -354,32 +364,86 @@ for ( var i = 0; i &lt; playerHp; i++)
             <kind>1</kind>
             <string>/// Draw Tower Carried 
 
-if (towerOnePicked)
-{
-    if(money &gt;= towerOneCost)
-        draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
-    else
-            draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
-    draw_circle(mouse_x, mouse_y, 100, c_red);
+switch towerPicked {
+    case picked.one:
+        if (money &gt;= cost.one)
+            draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
+        else
+            draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
+        draw_circle(mouse_x, mouse_y, range.one, c_red);    
+        break;
+        
+    case picked.two:
+        if (money &gt;= cost.two)
+            draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
+        else
+            draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
+        draw_circle(mouse_x, mouse_y, range.two, c_red);    
+        break;
+        
+    case picked.ice:
+        if (money &gt;= cost.ice)
+            draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
+        else
+            draw_sprite_ext(spr_icetower , 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
+        draw_circle(mouse_x, mouse_y, range.ice, c_red);    
+        break;
+    
+    case picked.bomb:
+        if (money &gt;= cost.bomb)
+            draw_sprite_ext(spr_bombtower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
+        else
+            draw_sprite_ext(spr_bombtower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
+        draw_circle(mouse_x, mouse_y, range.bomb, c_red);    
+        break;
+        
+    case picked.sniper:
+        if (money &gt;= cost.bomb)
+            draw_sprite_ext(spr_bombtower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
+        else
+            draw_sprite_ext(spr_bombtower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
+        draw_circle(mouse_x, mouse_y, range.sniper, c_red);    
+        break;
+
+    case picked.reverse:
+        if (money &gt;= cost.reverse)
+            draw_sprite_ext(spr_reversaltower , 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
+        else
+            draw_sprite_ext(spr_reversaltower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
+        draw_circle(mouse_x, mouse_y, range.reverse, c_red);    
+        break;
+        
+    default:
+        break; 
 }
 
-if (towerTwoPicked)
-{
-    if(money &gt;= towerTwoCost)
-        draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
-    else
-            draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
-    draw_circle(mouse_x, mouse_y, 50, c_red);
-}
 
-if (iceTowerPicked)
-{
-    if(money &gt;= iceTowerCost)
-        draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
-    else
-            draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
-    draw_circle(mouse_x, mouse_y, 80, c_red);
-}
+
+// (towerOnePicked)
+//
+//  if(money &gt;= towerOneCost)
+//      draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+//  else
+//          draw_sprite_ext(spr_Tower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
+//  draw_circle(mouse_x, mouse_y, 100, c_red);
+//
+//
+// (towerTwoPicked)
+//
+//  if(money &gt;= towerTwoCost)
+//      draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+//  else
+//          draw_sprite_ext(spr_TowerTwo, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
+//  draw_circle(mouse_x, mouse_y, 50, c_red);
+//
+
+// (iceTowerPicked){
+//    if(money &gt;= iceTowerCost)
+//        draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, .5);
+//    else
+//            draw_sprite_ext(spr_icetower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, .5);
+//    draw_circle(mouse_x, mouse_y, 80, c_red);
+//}
 </string>
           </argument>
         </arguments>
@@ -461,17 +525,75 @@ draw_sprite_ext(spr_reversaltower, 0, 352, room_height - 24, 1, 1, 0, c_red, 1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Highlight selected tower
-if(mouse_y &gt;= room_height - 40 &amp;&amp; mouse_y &lt;= room_height - 8){
-    if(mouse_x &gt;= 13 &amp;&amp; mouse_x &lt;= 47)
-        draw_roundrect_colour(12, room_height - 41, 48, room_height - 7, c_white, c_blue, true);
-        
-    if(mouse_x &gt;= 77 &amp;&amp; mouse_x &lt;= 111)
-        draw_roundrect_colour(78, room_height - 41, 112, room_height - 7, c_white, c_blue, true);
-        
-    if(mouse_x &gt;= 141 &amp;&amp; mouse_x &lt;= 175 &amp;&amp; iceTowerUnlocked)
-        draw_roundrect_colour(142, room_height - 41, 176, room_height - 7, c_white, c_blue, true);
-    }
+            <string>/// Highlight selected tower &amp; Draw Tower Description Menu
+
+var menuTop = room_height - 160;
+var menuBot = room_height - 96;
+
+if(isMouseOnTower(1)){
+    draw_roundrect_colour(12, room_height - 41, 48, room_height - 7, c_white, c_blue, true);
+    draw_set_colour(c_black);
+    draw_rectangle(0, menuTop, 64 + 64, menuBot, false);
+    draw_set_colour(c_white);
+    draw_text(0, menuTop, "Cost: " + string(cost.one))
+    draw_text(0, menuTop + 16, "Range: " + string(range.one))
+    draw_text(0, menuTop + 32, "Damage: 7")
+    draw_text(0, menuTop + 48, "Shoots Bullets")
+} 
+else if(isMouseOnTower(2)) {
+    draw_roundrect_colour(76, room_height - 41, 112, room_height - 7, c_white, c_blue, true);
+    draw_set_colour(c_black);
+    draw_rectangle(64, menuTop, 64 + 128, menuBot, false);
+    draw_set_colour(c_white);
+    draw_text(64, menuTop, "Cost: " + string(cost.two))
+    draw_text(64, menuTop + 16, "Range: " + string(range.two))
+    draw_text(64, menuTop + 32, "Damage: 5")
+    draw_text(64, menuTop + 48, "Area of Effect")
+}    
+    
+else if(isMouseOnTower(3) &amp;&amp; iceTowerUnlocked) {
+    draw_roundrect_colour(140, room_height - 41, 176, room_height - 7, c_white, c_blue, true);
+    draw_set_colour(c_black);
+    draw_rectangle(128, menuTop, 128 + 128, menuBot, false);
+    draw_set_colour(c_white);
+    draw_text(128, menuTop, "Cost: " + string(cost.ice))
+    draw_text(128, menuTop + 16, "Range: " + string(range.ice))
+    draw_text(128, menuTop + 32, "Damage: 0")
+    draw_text(128, menuTop + 48, "Slows enemies")
+}
+
+else if(isMouseOnTower(4)) {
+    draw_roundrect_colour(204, room_height - 41, 240, room_height - 7, c_white, c_blue, true);
+    draw_set_colour(c_black);
+    draw_rectangle(192, menuTop, 192 + 128, menuBot, false);
+    draw_set_colour(c_white);
+    draw_text(192, menuTop, "Cost: " + string(cost.bomb))
+    draw_text(192, menuTop + 16, "Range: " + string(range.bomb))
+    draw_text(192, menuTop + 32, "Damage: 12")
+    draw_text(192, menuTop + 48, "Shoots Bullets")
+}
+
+else if(isMouseOnTower(5)) {
+    draw_roundrect_colour(268, room_height - 41, 304, room_height - 7, c_white, c_blue, true);
+    draw_set_colour(c_black);
+    draw_rectangle(256, menuTop, 256 + 128 + 32, menuBot, false);
+    draw_set_colour(c_white);
+    draw_text(256, menuTop, "Cost: " + string(cost.sniper))
+    draw_text(256, menuTop + 16, "Range: " + string(range.sniper))
+    draw_text(256, menuTop + 32, "Damage: 15")
+    draw_text(256, menuTop + 48, "Long Range Shots")
+}
+
+else if(isMouseOnTower(6)) {
+    draw_roundrect_colour(332, room_height - 41, 368, room_height - 7, c_white, c_blue, true);
+    draw_set_colour(c_black);
+    draw_rectangle(320, menuTop, 320 + 128 + 32, menuBot - 16, false);
+    draw_set_colour(c_white);
+    draw_text(320, menuTop, "Cost: " + string(cost.one))
+    draw_text(320, menuTop + 16, "Range: " + string(range.one))
+    draw_text(320, menuTop + 32, "Reverses enemies")
+}
+
 </string>
           </argument>
         </arguments>
