@@ -4,7 +4,10 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_1</sound>
+    <sound>sound\snd_2</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_Tower</sprite>
     <sprite>sprites\spr_Tower_up</sprite>
@@ -81,6 +84,8 @@
       <object>objects\obj_bombbullet</object>
     </objects>
     <object>objects\obj_wall</object>
+    <object>objects\bg_snd</object>
+    <object>objects\obj_snd_2</object>
   </objects>
   <timelines name="timelines">
     <timelines name="L1">
