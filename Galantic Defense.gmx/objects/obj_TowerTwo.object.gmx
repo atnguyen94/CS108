@@ -33,6 +33,56 @@ range = 60;
 reloadSpeed = 45;
 
 damage = 5;
+
+shooting = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Restart shooting
+shooting = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set Image Index after shooting
+image_index = 0;
 </string>
           </argument>
         </arguments>
@@ -81,52 +131,7 @@ canShoot = true;
           <argument>
             <kind>1</kind>
             <string>/// Rotate towards enemy and shoot
-/*
-if (instance_exists(obj_enemyparent1))
-{
-    var inum = instance_number(obj_enemyparent1);
-    var enemyId = 0;
-    ids[instance_number(obj_enemyparent1)] = false;
-    
-    
-    for (var i = 0; i &lt; instance_number(obj_enemyparent1); i++)
-    {
-        ifs[i] = false;
-    
-        var enemy = instance_find(obj_enemyparent1, i);
-        enemyDistance = point_distance(x, y, enemy.x, enemy.y);
-        
-        if (enemyDistance &lt;= range)
-        {
-            enemyId = enemy;
-            ids[i] = true;
-                   
-        }
-    }
 
-    if (enemyId != 0)
-        {
-        if (canShoot)
-    {
-        canShoot = false;
-        alarm[1] = reloadSpeed;
-        
-        effect_create_below(ef_ring, x, y, 0, c_aqua);
-        
-        for (var i = 0; i &lt; instance_number(obj_enemyparent1); i++)
-        {
-            if (ids[i])
-            {
-            var enemy = instance_find(obj_enemyparent1, i);
-            enemy.currentHp -= damage;
-            ids[i] = false;
-            }
-        }  
-      }
-    }
-}
-
-*/
 
 if (canShoot)
 {
@@ -149,8 +154,18 @@ if (canShoot)
             alarm[1] = reloadSpeed;
             
             effect_create_below(ef_ring,x ,y,0, c_aqua);
+            
+        if(shooting) {
+            image_index = 1;
+            shooting = false;
+            alarm[8] = 10;
+            alarm[9] = reloadSpeed;
+        }
     }
+    
+
 }
+
 </string>
           </argument>
         </arguments>

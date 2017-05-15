@@ -32,6 +32,8 @@ reloadSpeed = 0;
 bulletSpeed = 0;
 canShoot = true;
 
+image_speed = 0;
+
 </string>
           </argument>
         </arguments>

@@ -398,10 +398,10 @@ switch towerPicked {
         break;
         
     case picked.sniper:
-        if (money &gt;= cost.bomb)
-            draw_sprite_ext(spr_bombtower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
+        if (money &gt;= cost.sniper)
+            draw_sprite_ext(spr_snipertower, 0, mouse_x, mouse_y, 1, 1, 0, c_white, 0.5);
         else
-            draw_sprite_ext(spr_bombtower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
+            draw_sprite_ext(spr_snipertower, 0, mouse_x, mouse_y, 1, 1, 0, c_red, 0.5);
         draw_circle(mouse_x, mouse_y, range.sniper, c_red);    
         break;
 
@@ -565,12 +565,12 @@ else if(isMouseOnTower(3) &amp;&amp; iceTowerUnlocked) {
 else if(isMouseOnTower(4)) {
     draw_roundrect_colour(204, room_height - 41, 240, room_height - 7, c_white, c_blue, true);
     draw_set_colour(c_black);
-    draw_rectangle(192, menuTop, 192 + 128, menuBot, false);
+    draw_rectangle(192, menuTop, 192 + 160, menuBot, false);
     draw_set_colour(c_white);
     draw_text(192, menuTop, "Cost: " + string(cost.bomb))
     draw_text(192, menuTop + 16, "Range: " + string(range.bomb))
     draw_text(192, menuTop + 32, "Damage: 12")
-    draw_text(192, menuTop + 48, "Shoots Bullets")
+    draw_text(192, menuTop + 48, "Shoots AoE Bullet")
 }
 
 else if(isMouseOnTower(5)) {

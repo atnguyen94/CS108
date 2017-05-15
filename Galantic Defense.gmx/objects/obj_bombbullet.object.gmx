@@ -73,7 +73,7 @@ with (obj_enemyparent1)
         var dist = distance_to_point(bombx, bomby);
         if (dist &lt;= 40)
         {
-            currentHp -= obj_bombbullet.damage;
+            currentHp -= 12;
         }
  }
 </string>
