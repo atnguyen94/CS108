@@ -481,7 +481,7 @@ draw_sprite_ext(spr_TowerTwo, 0, 96, room_height - 24, 1, 1, 0, c_red, 1);
 
 if (iceTowerUnlocked)
 { 
-    if(money &gt;= iceTowerCost)
+    if(money &gt;= cost.ice)
         draw_sprite(spr_icetower, 0, 160, room_height - 24);
     else
         draw_sprite_ext(spr_icetower,0,160, room_height -24, 1, 1, 0, c_red, 1);

@@ -31,7 +31,7 @@ enspeed = 2;
 
 event_inherited();
 
-maxHp = 20;
+maxHp = 25;
 currentHp = maxHp;
 </string>
           </argument>

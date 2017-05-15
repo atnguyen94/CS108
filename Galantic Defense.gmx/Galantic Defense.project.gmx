@@ -29,7 +29,13 @@
     <background>background\bg_Tileset</background>
   </backgrounds>
   <paths name="paths">
-    <path>paths\pth_1</path>
+    <paths name="L1">
+      <path>paths\pth_1</path>
+    </paths>
+    <paths name="L2">
+      <path>paths\pth_2</path>
+      <path>paths\pth_2_2</path>
+    </paths>
   </paths>
   <scripts name="scripts">
     <scripts name="Waves">
@@ -53,6 +59,7 @@
     <objects name="Controllers">
       <object>objects\obj_controllerparent1</object>
       <object>objects\obj_controller1</object>
+      <object>objects\obj_controller2</object>
       <object>objects\obs_title</object>
       <object>objects\obj_controller_infinite</object>
     </objects>
@@ -76,14 +83,22 @@
     <object>objects\obj_wall</object>
   </objects>
   <timelines name="timelines">
-    <timeline>timelines\tm_L1W1</timeline>
-    <timeline>timelines\tm_L1W2</timeline>
-    <timeline>timelines\tm_L1W3</timeline>
+    <timelines name="L1">
+      <timeline>timelines\tm_L1W1</timeline>
+      <timeline>timelines\tm_L1W2</timeline>
+      <timeline>timelines\tm_L1W3</timeline>
+    </timelines>
+    <timelines name="L2">
+      <timeline>timelines\tm_L2W3</timeline>
+      <timeline>timelines\tmL2W1</timeline>
+      <timeline>timelines\tm_L2W2</timeline>
+    </timelines>
   </timelines>
   <rooms name="rooms">
     <room>rooms\rm_title</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_1_inf</room>
+    <room>rooms\rm_2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

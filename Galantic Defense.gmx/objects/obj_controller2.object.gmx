@@ -29,7 +29,7 @@
 // wave vars
 event_inherited();
 waves = 3;
-path = pth_1;
+path = pth_2;
 currentWave = waves;
 enemies = 8;
 
@@ -152,27 +152,27 @@ switch(currentWave)
 {
     case 3:
     if (start) {
-        timeline_index = tm_L1W1;
+        timeline_index = tmL2W1;
         timeline_running = true;
     }
     break;
     
     case 2:
     if (start){
-        timeline_index = tm_L1W2;
+        timeline_index = tm_L2W2;
         timeline_running = true;
     }
     break;
     
     case 1:
     if (start){
-        timeline_index = tm_L1W3;
+        timeline_index = tm_L2W3;
         timeline_running = true;       
     }
     break;
-case 0:
-    if (! instance_exists(obj_enemyparent1))
-        room_goto(rm_2);
+//case 0:
+  //  if (! instance_exists(obj_enemyparent1))
+     //   room_goto();
 }
 </string>
           </argument>
